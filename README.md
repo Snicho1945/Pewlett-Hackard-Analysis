@@ -15,7 +15,8 @@ Using PostgreSQL and the data provided I was able to pull data and build up tabl
     INNER JOIN title AS ti
     ON (rt.emp_no = ti.emp_no)
     WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
-    AND (ti.to_date = '9999-01-01');}
+    AND (ti.to_date = '9999-01-01');
+    }
     ```
 This particular piece of code gathers data from three different tables, two provided and one of own creation(with guidance), to create a new table showing which employees are eligible for the mentorship program, which in turn will help allevate the loss of many employees to retirement.
 
