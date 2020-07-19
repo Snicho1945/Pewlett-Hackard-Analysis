@@ -5,7 +5,7 @@ Data analytics using SQL
 The intial problem that arose to require this analysis was a so called "silver tsunami", a large number of employees reaching retirement. The purpose of this analysis was to identify employees reaching retirement age along with the title they held, and what their title in the company was.
 
 Using PostgreSQL and the data provided I was able to pull data and build up tables such as:
- ``     -- mentor eligibility
+ `` -- mentor eligibility
     SELECT e.emp_no, e.first_name, e.last_name, rt.title, rt.from_date, ti.to_date
     INTO mentor_elig
     FROM employees as e
