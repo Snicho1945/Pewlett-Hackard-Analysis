@@ -28,8 +28,9 @@ The results of this analysis yeilded results such as break down of the total ret
 - 1,610 Technique Leaders
 - Total of 54,722
 
-The number of total retiring employees is 33118
-The number of total employees eligible for the mentor program is 1549
+The number of total retiring employees is 33118.
+
+The number of total employees eligible for the mentor program is 1549.
 
 Due to the large deficit of eligible mentors vs the number of retiring employees I think there should be more analysis into creating a larger mentor program to combat the large exodus of employees.
 
