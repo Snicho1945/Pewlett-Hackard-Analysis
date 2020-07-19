@@ -1,0 +1,85 @@
+-- challenge first table
+SELECT sl.emp_no,
+sl.first_name,
+sl.last_name,
+ti.title,
+ti.from_date,
+sa.salary
+INTO CHretire
+FROM sales_info as sl
+INNER JOIN salaries as sa
+ON (sl.emp_no = sa.emp_no)
+INNER JOIN title as ti
+ON (sa.emp_no = ti.emp_no);
+
+
+-- partition for retiring by title
+SELECT emp_no,
+first_name,
+last_name,
+title,
+from_date,
+salary
+INTO challengeretire
+FROM
+(SELECT emp_no,
+first_name,
+last_name,
+title,
+from_date,
+salary, ROW_NUMBER() OVER 
+(PARTITION BY (emp_no) ORDER BY from_date DESC) rn
+   FROM chretire
+  ) tmp WHERE rn = 1;
+
+
+  
+-- partition for title   
+SELECT emp_no,
+title,
+from_date,
+to_date
+INTO Recenttitle
+FROM
+(SELECT emp_no,
+title,
+from_date,
+to_date, ROW_NUMBER() OVER 
+(PARTITION BY (emp_no) ORDER BY from_date DESC) rn
+   FROM title
+  ) tmp WHERE rn = 1;
+  
+-- mentor eligibility
+SELECT e.emp_no, e.first_name, e.last_name, rt.title, rt.from_date, ti.to_date
+INTO mentor_elig
+FROM employees as e
+INNER JOIN recenttitle AS rt
+ON (e.emp_no = rt.emp_no)
+INNER JOIN title AS ti
+ON (rt.emp_no = ti.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+AND (ti.to_date = '9999-01-01');
+
+
+-- number of titles retiring
+SELECT COUNT(cr.title), ti.title
+into title_count
+FROM challengeretire as cr
+left join title as ti
+ON cr.emp_no = ti.emp_no
+GROUP BY ti.title;
+
+-- number if employees per title 
+SELECT COUNT (ti.emp_no), ti.title
+into employee_count
+from title as ti
+group by ti.title;
+
+select count (cr.emp_no)
+from challengeretire as cr
+
+select sum (tc.count)
+from title_count as tc
+
+select count (me.emp_no)
+from mentor_elig as me
