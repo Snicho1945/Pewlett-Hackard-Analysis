@@ -5,7 +5,7 @@ Data analytics using SQL
 The intial problem that arose to require this analysis was a so called "silver tsunami", a large number of employees reaching retirement. The purpose of this analysis was to identify employees reaching retirement age along with the title they held, and what their title in the company was.
 
 Using PostgreSQL and the data provided I was able to pull data and build up tables such as:
-      -- mentor eligibility
+ ``     -- mentor eligibility
     SELECT e.emp_no, e.first_name, e.last_name, rt.title, rt.from_date, ti.to_date
     INTO mentor_elig
     FROM employees as e
@@ -14,7 +14,7 @@ Using PostgreSQL and the data provided I was able to pull data and build up tabl
     INNER JOIN title AS ti
     ON (rt.emp_no = ti.emp_no)
     WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
-    AND (ti.to_date = '9999-01-01');
+    AND (ti.to_date = '9999-01-01');``
 This particular piece of code gathers data from three different tables, two provided and one of own creation(with guidance), to create a new table showing which employees are eligible for the mentorship program, which in turn will help allevate the loss of many employees to retirement.
 
 The results of this analysis yeilded results such as break down of the total retirees by title:
