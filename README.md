@@ -18,6 +18,7 @@ Using PostgreSQL and the data provided I was able to pull data and build up tabl
     AND (ti.to_date = '9999-01-01');
     }
     ```
+    
 This particular piece of code gathers data from three different tables, two provided and one of own creation(with guidance), to create a new table showing which employees are eligible for the mentorship program, which in turn will help allevate the loss of many employees to retirement.
 
 The results of this analysis yeilded results such as break down of the total retirees by title:
